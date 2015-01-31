@@ -1,0 +1,13 @@
+<h1>The To Do's App</h1>
+
+<h2>Projects</h2>
+
+<ul>
+  <% @projects.each do |p| %>
+    <li><%= p.name %> |
+    <% if p.done %> (done!)
+      <% else %> (pending)
+    <% end %>
+    </li>
+  <% end %>
+</ul>
