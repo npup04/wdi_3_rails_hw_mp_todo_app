@@ -1,14 +1,13 @@
-<%= form_for @project do |f| %>
-  <% if @project.errors.any? %>
+<%= form_for [@project, @list] do |f| %>
+  <% if @list.errors.any? %>
   <div id="error_explanation">
 
     <h2>
       Sorry, please try again:
     </h2>
 
-
   <ul>
-    <%= @project.errors.full_messages.each do |msg| %>
+    <%= @list.errors.full_messages.each do |msg| %>
     <li>
       <%= msg %>
     </li>
@@ -16,6 +15,7 @@
   </ul>
   </div>
   <% end %>
+
 
   <%= f.label :name %> <br />
   <%= f.text_field :name %> <br />
