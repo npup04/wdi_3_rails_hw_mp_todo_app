@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   resources :projects do
     resources :lists do
-      resources :tasks
+      resources :tasks do
+        resources :notes
+      end
 
     end
   end

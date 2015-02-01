@@ -3,4 +3,5 @@ class Task < ActiveRecord::Base
   validates :priority, presence: true
   validates :priority, inclusion: 0..5
   belongs_to :list
+  has_many :notes, dependent: :destroy
 end
