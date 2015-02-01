@@ -3,11 +3,16 @@
 <h2>Projects</h2>
 
 <ul>
-  <% @projects.each do |p| %>
-    <li><%= p.name %> |
-    <% if p.done %> (done!)
+  <% @projects.each do |project| %>
+    <li><%= project.name %> |
+    <% if project.done %> (done!)
       <% else %> (pending)
-    <% end %>
+    <% end %> |
+    <%= link_to 'Edit', edit_project_path(project) %> |
+    <%= link_to 'Delete', project_path(project), method: :delete %>
+
     </li>
   <% end %>
 </ul>
+
+<%= link_to 'Create New Project', new_project_path %>
