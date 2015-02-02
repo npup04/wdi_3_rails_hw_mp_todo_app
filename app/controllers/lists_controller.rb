@@ -2,10 +2,6 @@ require 'pry-byebug'
 class ListsController < ApplicationController
   before_action :set_list, only: [:show, :edit, :update, :destroy]
 
-  def index
-    @project = Project.find(params[:project_id])
-    @lists = @project.lists
-  end
   def new
     @project = Project.find(params[:project_id])
     @list = @project.lists.new

@@ -42,5 +42,20 @@
 # leaf_dump.tasks.create!(name: 'Buy Wood Chipper', priority: 2)
 # leaf_dump.tasks.create!(name: 'Buy Leafbags', priority: 5)
 
-#Create a note associated with each list
+#Create a note associated with each task
+# task1 = Task.find(1)
+# task2 = Task.find(2)
+# task3 = Task.find(3)
+# task4 = Task.find(4)
+# task7 = Task.find(7)
+# task8 = Task.find(8)
+# task9 = Task.find(9)
+
+# task1.notes.create!(comment: 'Jim ph number 555-555-5555')
+# task2.notes.create!(comment: 'hours 8-6')
+# task3.notes.create!(comment: 'check downtown stores first')
+# task4.notes.create!(comment: 'sale at local hardware store')
+# task7.notes.create!(comment: 'hrs 9-5')
+# task8.notes.create!(comment: 'coupons?')
+# task9.notes.create!(comment: 'store closing early')
 
