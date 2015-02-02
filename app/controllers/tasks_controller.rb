@@ -1,9 +1,11 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show]
+  # before_action :set_task, only: [:show]
 
   def show
-    @list = List.find(params[:list_id])
-    @notes = @task.notes
+    @task = Task.find(params[:id])
+    # @list = List.find(params[:list_id])
+    # @task = @list.tasks.find(params[:id])
+    # # @notes = @task.notes
   end
 
   private

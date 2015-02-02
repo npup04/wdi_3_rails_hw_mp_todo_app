@@ -1,18 +1,15 @@
 Rails.application.routes.draw do
-  resources :projects do
-    resources :lists do
-      resources :tasks do
-        resources :notes
-      end
+  resources :lists, shallow: true do
+    resources :tasks
+    resources :notes
 
-    end
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
-  root 'projects#index'
+  root 'lists#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

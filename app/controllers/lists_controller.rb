@@ -2,12 +2,15 @@ require 'pry-byebug'
 class ListsController < ApplicationController
   before_action :set_list, only: [:show, :edit, :update, :destroy]
 
+  def index
+    @lists = List.all
+
+  end
   def new
     @project = Project.find(params[:project_id])
     @list = @project.lists.new
   end
   def show
-    @project = Project.find(params[:project_id])
     @tasks = @list.tasks
   end
   def edit
