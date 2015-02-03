@@ -6,6 +6,7 @@ class ListsController < ApplicationController
     @lists = List.all
   end
   def new
+    @list = List.new
   end
   def show
     @tasks = @list.tasks
@@ -15,7 +16,7 @@ class ListsController < ApplicationController
   def create
     @list = List.new(list_params)
     if @list.save
-      redirect_to @list #action: :index
+      redirect_to action: :index
     else
       render 'new'
     end

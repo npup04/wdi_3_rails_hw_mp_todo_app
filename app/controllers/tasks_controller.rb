@@ -1,28 +1,38 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update]
+  before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def show
     @task = Task.find(params[:id])
-    # @list = List.find(params[:list_id])
-    # @task = @list.tasks.find(params[:id])
-    @notes = @task.notes
+    #@notes = @task.notes
   end
   def new
+    @list = List.find(params[:list_id])
+    @task = @list.tasks.new
+  end
+  def create
+    @list = List.find(params[:list_id])
+    @task = @list.tasks.new(task_params)
+    if @task.save
+      #redirect_to @task
+      redirect_to @list
+    else
+      render 'new'
+    end
   end
   def edit
   end
   def update
+    @list = @task.list
     if @task.update(task_params)
-      redirect_to action: :show
+      redirect_to @list
     else
       render 'edit'
     end
   end
   def destroy
-    @list = List.find(params[:list_id])
-    @task = @list.tasks.find(params[:id])
+    @list = @task.list
     @task.destroy
-    redirect_to list_path(@list)
+    redirect_to @list
   end
 
   private
