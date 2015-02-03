@@ -1,4 +1,3 @@
-require 'pry-byebug'
 class ListsController < ApplicationController
   before_action :set_list, only: [:show, :edit, :update, :destroy]
 
@@ -6,6 +5,7 @@ class ListsController < ApplicationController
     @lists = List.all
   end
   def new
+    @list = List.new
   end
   def show
     @tasks = @list.tasks
