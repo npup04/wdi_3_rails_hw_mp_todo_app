@@ -1,4 +1,17 @@
-<%= form_for @task do |f| %>
+<div>
+  <!--
+    look on line 5 where the [@list, @task] is.
+    rails doesn't make this very obvious, but if you have a
+    nested route, then you need to provide both objects
+    (the list and the array), in their nested order, in an array
+    to make the form_for work.
+    if you don't, you will get an error like "undefined tasks_path"
+    which is admittedly a bit cryptic, but that's what it means -
+    that you need to provide both @list and @task to form_for.
+  -->
+</div>
+
+<%= form_for [@list, @task] do |f| %>
 
   <% if @task.errors.any? %>
     <div id="error_explanation">

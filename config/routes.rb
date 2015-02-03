@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  # kept the routes the same, I think
   resources :lists, shallow: true do
     resources :tasks
     resources :notes
