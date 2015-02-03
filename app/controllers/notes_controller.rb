@@ -9,8 +9,7 @@ class NotesController < ApplicationController
     @note =  @task.notes.new
   end
   def create
-    #@list = List.find(params[:list_id])
-    @task = Task.find(params[:task_id])
+    @task = Task.find(params[:list_id])
     @note =  @task.notes.new(note_params)
     if @note.save
       redirect_to @task
