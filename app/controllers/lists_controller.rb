@@ -4,11 +4,8 @@ class ListsController < ApplicationController
 
   def index
     @lists = List.all
-
   end
   def new
-    @project = Project.find(params[:project_id])
-    @list = @project.lists.new
   end
   def show
     @tasks = @list.tasks
@@ -16,15 +13,19 @@ class ListsController < ApplicationController
   def edit
   end
   def create
-    @project = Project.find(params[:project_id])
-    @list = @project.lists.new(list_params)
+    @list = List.new(list_params)
     if @list.save
-      redirect_to action: :index
+      redirect_to @list #action: :index
     else
       render 'new'
     end
   end
   def update
+    if @list.update(list_params)
+      redirect_to action: :index
+    else
+      render 'edit'
+    end
   end
   def destroy
     @list.destroy

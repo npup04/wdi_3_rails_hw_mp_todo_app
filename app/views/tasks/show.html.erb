@@ -5,14 +5,16 @@ Task show page, display Notes
 </h1>
 
 <ul>
-  <% @notes.each do |note| %>
-    <li>
-      <%= note.comment %>
+  <% @task.notes.each do |note| %>
+    <li><%= note.comment %> |
+    <%= link_to 'Edit', edit_note_path(note)%> |
+      <%= link_to 'Delete', note_path(note), method: :delete %>
     </li>
   <% end %>
 </ul>
 
-<h3>Add a comment:</h3>
-<%= render 'comments/form' %>
+
+<%= link_to 'Create New Note', new_list_note_path(@task) %>
+
 
 <%= link_to 'Back', :back %>

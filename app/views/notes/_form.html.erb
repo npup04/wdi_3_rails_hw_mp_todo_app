@@ -1,5 +1,5 @@
-<%= form_for @list do |f| %>
-  <% if @list.errors.any? %>
+<%= form_for @note do |f| %>
+  <% if @note.errors.any? %>
   <div id="error_explanation">
 
     <h2>
@@ -7,7 +7,7 @@
     </h2>
 
   <ul>
-    <%= @list.errors.full_messages.each do |msg| %>
+    <%= @note.errors.full_messages.each do |msg| %>
     <li>
       <%= msg %>
     </li>
@@ -16,8 +16,9 @@
   </div>
   <% end %>
 
-  <%= f.label :name %> <br />
-  <%= f.text_field :name %> <br />
+  <%= f.label :comment %> <br />
+  <%= f.text_field :comment %> <br />
+
   <%= f.submit %>
 <% end %>
 

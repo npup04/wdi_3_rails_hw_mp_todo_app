@@ -7,19 +7,12 @@ List show page, display Tasks
 <ul>
   <% @tasks.each do |task| %>
     <li><%= link_to task.name, task %>
-      <%= link_to 'Edit', edit_project_path(project) %> |
-      <%= link_to 'Delete', project_path(project), method: :delete %>
-      <ul>
-        <% project.lists.each do |list| %>
-          <li>
-            <%= list.name %>
-          </li>
-      <% end %>
-      </ul>
-
+      <%= link_to 'Edit', edit_task_path(task) %> |
+      <%= link_to 'Delete', task_path(task), method: :delete %>
     </li>
   <% end %>
 </ul>
 
+<%= link_to 'Create New Task', new_list_task_path(@list) %>
 
 <%= link_to 'Back', :back %>
