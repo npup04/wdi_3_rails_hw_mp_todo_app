@@ -5,11 +5,11 @@ class NotesController < ApplicationController
     @note = Note.find(params[:id])
   end
   def new
-    @task = Task.find(params[:list_id])
+    @task = Task.find(params[:task_id])
     @note =  @task.notes.new
   end
   def create
-    @task = Task.find(params[:list_id])
+    @task = Task.find(params[:task_id])
     @note =  @task.notes.new(note_params)
     if @note.save
       redirect_to @task
@@ -30,7 +30,7 @@ class NotesController < ApplicationController
   def destroy
     @task = @note.task
     @note.destroy
-    redirect_to task_path(@task)
+    redirect_to @task
   end
 
   private

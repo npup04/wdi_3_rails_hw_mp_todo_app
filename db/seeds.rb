@@ -6,56 +6,36 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-#Create projects:
-# Project.create!(name: 'Clean Garage')
-# Project.create!(name: 'Paint House')
+#Clean existing data from tables
+Note.delete_all
+Task.delete_all
+List.delete_all
 
-#Create lists associated with projects:
-# clean_garage = Project.find_by(name: 'Clean Garage')
-# paint_house = Project.find_by(name: 'Paint House')
-# fall_cleaning = Project.find_by(name: 'Fall Cleaning')
-
-# clean_garage.lists.create!(name: 'Sell Old Car')
-# clean_garage.lists.create!(name: 'Yard Sale')
-# paint_house.lists.create!(name: 'Choose Paint Color')
-# paint_house.lists.create!(name: 'Buy Paint Supplies')
-# fall_cleaning.lists.create!(name: 'Buy Leaf Blower')
-# fall_cleaning.lists.create!(name: 'Drop Leaves At Dump')
+#Create lists:
+list_clean_garage = List.create!(name: 'Clean Garage')
+list_paint_house = List.create!(name: 'Paint House')
+list_spring_cleaning = List.create!(name: 'Spring Cleaning')
 
 #Create tasks associated with lists:
-# sell_old_car = List.find_by(name: 'Sell Old Car')
-# yard_sale = List.find_by(name: 'Yard Sale')
-# choose_paint = List.find_by(name: 'Choose Paint Color')
-# paint_supplies = List.find_by(name: 'Buy Paint Supplies')
-# leaf_supplies = List.find_by(name: 'Buy Leaf Blower')
-# leaf_dump = List.find_by(name: 'Drop Leaves At Dump')
-# sell_old_car.tasks.create!(name: 'Buy Kelly Blue Book', priority: 3)
-# sell_old_car.tasks.create!(name: 'Vacuum Trunk', priority: 4)
-# yard_sale.tasks.create!(name: 'Sweep Garage Floor', priority: 5)
-# yard_sale.tasks.create!(name: 'Recycle Boxes', priority: 3)
-# choose_paint.tasks.create!(name: 'Buy Swatches', priority: 2)
-# choose_paint.tasks.create!(name: 'Compare Color Swatches', priority: 3)
-# paint_supplies.tasks.create!(name: 'Buy Paint', priority: 5)
-# paint_supplies.tasks.create!(name: 'Buy Brushes', priority: 1)
-# leaf_supplies.tasks.create!(name: 'Buy Rake', priority: 3)
-# leaf_supplies.tasks.create!(name: 'Buy Compost Bin', priority: 4)
-# leaf_dump.tasks.create!(name: 'Buy Wood Chipper', priority: 2)
-# leaf_dump.tasks.create!(name: 'Buy Leafbags', priority: 5)
+List.find_by(name: 'Clean Garage').tasks.create!(name: 'Sweep Garage Floor', priority: 5)
+List.find_by(name: 'Clean Garage').tasks.create!(name: 'Recycle Boxes', priority: 4)
+
+List.find_by(name: 'Paint House').tasks.create!(name: 'Buy Brushes', priority: 4)
+List.find_by(name: 'Paint House').tasks.create!(name: 'Buy Paint', priority: 4)
+List.find_by(name: 'Spring Cleaning').tasks.create!(name: 'Buy Wheelbarrow', priority: 2)
+List.find_by(name: 'Spring Cleaning').tasks.create!(name: 'Borrow Ladder', priority: 2)
+
 
 #Create a note associated with each task
-# task1 = Task.find(1)
-# task2 = Task.find(2)
-# task3 = Task.find(3)
-# task4 = Task.find(4)
-# task7 = Task.find(7)
-# task8 = Task.find(8)
-# task9 = Task.find(9)
-
-# task1.notes.create!(comment: 'Jim ph number 555-555-5555')
-# task2.notes.create!(comment: 'hours 8-6')
-# task3.notes.create!(comment: 'check downtown stores first')
-# task4.notes.create!(comment: 'sale at local hardware store')
-# task7.notes.create!(comment: 'hrs 9-5')
-# task8.notes.create!(comment: 'coupons?')
-# task9.notes.create!(comment: 'store closing early')
-
+Task.find_by(name: 'Sweep Garage Floor').notes.create!(comment: 'Jim ph number 555-555-5555')
+Task.find_by(name: 'Sweep Garage Floor').notes.create!(comment: 'Call Jill after 9am')
+Task.find_by(name: 'Recycle Boxes').notes.create!(comment: 'Recycle Center hours 8-6')
+Task.find_by(name: 'Recycle Boxes').notes.create!(comment: 'Bring plastic bottles')
+Task.find_by(name: 'Buy Brushes').notes.create!(comment: 'sale at local hardware store')
+Task.find_by(name: 'Buy Brushes').notes.create!(comment: 'coupons?')
+Task.find_by(name: 'Buy Paint').notes.create!(comment: 'store closed on Monday holiday')
+Task.find_by(name: 'Buy Paint').notes.create!(comment: 'sale at Home Depot')
+Task.find_by(name: 'Buy Wheelbarrow').notes.create!(comment: 'check for plastic vs metal models')
+Task.find_by(name: 'Buy Wheelbarrow').notes.create!(comment: 'John 555-555-5555')
+Task.find_by(name: 'Borrow Ladder').notes.create!(comment: 'Jane home until 5p')
+Task.find_by(name: 'Borrow Ladder').notes.create!(comment: 'get extra help from Jozie')

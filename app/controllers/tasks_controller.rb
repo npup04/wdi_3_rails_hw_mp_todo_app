@@ -3,7 +3,7 @@ class TasksController < ApplicationController
 
   def show
     @task = Task.find(params[:id])
-    #@notes = @task.notes
+    @note = @task.notes
   end
   def new
     @list = List.find(params[:list_id])
@@ -13,7 +13,6 @@ class TasksController < ApplicationController
     @list = List.find(params[:list_id])
     @task = @list.tasks.new(task_params)
     if @task.save
-      #redirect_to @task
       redirect_to @list
     else
       render 'new'
