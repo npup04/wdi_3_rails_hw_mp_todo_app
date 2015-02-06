@@ -1,6 +1,6 @@
-<h1>
+<h2>
   <%= @task.name %> >> Notes
-</h1>
+</h2>
 
 <ul>
   <% @task.notes.each do |note| %>
@@ -12,5 +12,6 @@
 </ul>
 
 
-<%= link_to 'Create New Note', new_task_note_path(@task) %>
+<%= link_to 'Create New Note', new_task_note_path(@task) %> |
+<%= link_to 'Home', root_path %>
 
